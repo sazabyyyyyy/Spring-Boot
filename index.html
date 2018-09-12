@@ -12,7 +12,11 @@ content="text/html;charset=UTF-8">
 </head>
 <body>
     <h1>Hello Page</h1>
-    <p class="msg" ht:text="${msg}"></p>
+    <p class="msg" th:text="${msg}">please wait...</p>
+    <form action="/" method="post">
+    <input type="text" name="text1" th:value="${value}"/>
+    <input type="submit" value="Click"/>
+    </form>
 
 </body>
 </html>
