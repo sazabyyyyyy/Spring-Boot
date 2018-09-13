@@ -8,8 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author Takuya Kaneko
- *ブラウザからURLの末尾に0-4の整数値をつけてアクセスすると
- *その番号のデータがJSON形式で出力される
+ *
+ *
  */
 
 @Controller
@@ -18,15 +18,41 @@ public class HeloController {
 	@RequestMapping(value="/",method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav){
 
-			mav.addObject("msg","お名前を書いて送信してください");
+			mav.addObject("msg","フォームを送信してください");
 			mav.setViewName("index");
 			return mav;
 			}
 
 	@RequestMapping(value="/",method=RequestMethod.POST)
-	public ModelAndView send(@RequestParam("text1")String str,ModelAndView mav) {
-		mav.addObject("msg","こんにちは"+str+"さん");
-		mav.addObject("value",str);
+	public ModelAndView send(
+			@RequestParam(value="check1",required=false)Boolean check1,
+			@RequestParam(value="radio1",required=false)String radio1,
+			@RequestParam(value="select1",required=false)String select1,
+			@RequestParam(value="select2",required=false)String[] select2,
+			ModelAndView mav) {
+
+		String res="";
+
+		try {
+			res = "check" + check1
+
+					+ "radio:" + radio1 + "select;" + select1 + "\nselect2:";
+		} catch (NullPointerException e) {
+			// TODO: handle exception
+		}
+
+		try {
+			res+=", "+select2[0];
+			for(int i=1;i<select2.length;i++) {
+				res +=", "+select2[i];
+			}
+
+
+		} catch (NullPointerException e) {
+			res+="null";
+		}
+
+		mav.addObject("msg",res);
 		mav.setViewName("index");
 		return mav;
 	}
