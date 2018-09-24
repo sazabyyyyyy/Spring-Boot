@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="/css/index222.css" th:href="@{/css/index222.css}" rel="stylesheet"></link>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <style>
+        body {
+            font-size: 40pt;
+            color: gray;
+            margin: 5px 18px;
+            text-align: center;
+
+        }
+
+
+        h1 {
+            font-size: 100px;
+            font-weight: bold;
+            color: gray;
+            text-align: center;
+        }
+
+        p.age {
+            font-size: 75px;
+            color: gray;
+        }
+
+        p.nenshu {
+            font-size: 75px;
+            color: gray;
+        }
+
+        select#select1 {
+            width: 120px !important;
+            height: 75px;
+            font-size: 50px;
+            color: gray;
+
+        }
+
+        button.button7 {
+            width: 300px;
+            height: 60px;
+            border: 1px solid gray;
+            background-color: gray;
+            color: white;
+            font-size: 22px;
+            margin: 40px auto;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>札幌市国民保険計算</h1>
+    <p class='age' th:text="${msg}">please wait...</p>
+
+
+    <form action="/" method="post">
+
+        <div>
+            <input type="radio" id="radioA" name="radio1" value="39" checked>
+            <label for="radioA">39歳以下</label>
+            <input type="radio" id="radioB" name="radio1" value="40">
+            <label for="radioB">40歳以上</label>
+        </div>
+        <div>
+            <p class="nenshu"> 昨年の年収を選んでください</p>
+        </div>
+        <div>
+            <select name="select1" id="select1">
+                <option value="100">100</option>
+                <option value="120">120</option>
+                <option value="140">140</option>
+                <option value="160">160 </option>
+                <option value="180">180</option>
+                <option value="200">200</option>
+                <option value="250">250</option>
+                <option value="300">300</option>
+                <option value="350">350</option>
+                <option value="400">400</option>
+                <option value="450">450 </option>
+                <option value="500">500</option>
+                <option value="550">550</option>
+                <option value="600">600</option>
+                <option value="650">650</option>
+                <option value="700">700</option>
+                <option value="750">750</option>
+                <option value="800">800</option>
+                <option value="850">850</option>
+                <option value="900">900</option>
+
+            </select>万円
+        </div>
+        <div>
+            <button class="button7" type="submit">計算</button>
+        </div>
+    </form>
+</body>
+
+</html>
